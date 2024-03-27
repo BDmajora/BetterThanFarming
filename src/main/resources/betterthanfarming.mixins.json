@@ -1,0 +1,19 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "dundigundi.betterthanfarming.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+      "CowMixin",
+      "ChickenMixin",
+      "SheepMixin",
+      "SquidMixin",
+      "CraftingMixin",
+      "ItemDyeMixin"
+    ],
+    "client": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+  }
+}
