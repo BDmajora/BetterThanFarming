@@ -47,3 +47,5 @@ public class BetterThanFarming implements ModInitializer, GameStartEntrypoint {
 		LOGGER.info("Bon appétit! :D");
 	}
 }
+
+//oops that is a bug
