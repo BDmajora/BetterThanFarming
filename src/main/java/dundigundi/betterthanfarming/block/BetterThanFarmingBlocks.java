@@ -3,6 +3,7 @@ package dundigundi.betterthanfarming.block;
 import dundigundi.betterthanfarming.BetterThanFarming;
 import dundigundi.betterthanfarming.BetterThanFarmingConfig;
 import dundigundi.betterthanfarming.BetterThanFarmingTags;
+import dundigundi.betterthanfarming.block.crops.BlockCropsWatermelon;
 import dundigundi.betterthanfarming.block.entity.TileEntityCheeseMaker;
 import dundigundi.betterthanfarming.block.entity.TileEntityStove;
 import dundigundi.betterthanfarming.gui.ContainerCheeseMaker;
@@ -10,18 +11,20 @@ import dundigundi.betterthanfarming.gui.ContainerStove;
 import dundigundi.betterthanfarming.gui.GuiCheeseMaker;
 import dundigundi.betterthanfarming.gui.GuiStove;
 import net.minecraft.client.render.block.model.BlockModelRenderBlocks;
+import net.minecraft.core.sound.BlockSounds;
 import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockCropsPumpkin;
 import net.minecraft.core.block.BlockTallGrass;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.tool.ItemToolPickaxe;
-import net.minecraft.core.sound.BlockSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sunsetsatellite.catalyst.Catalyst;
 import sunsetsatellite.catalyst.core.util.MpGuiEntry;
 import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.helper.EntityHelper;
+import turniplabs.halplibe.helper.TextureHelper;
 
 
 public class BetterThanFarmingBlocks {
@@ -39,9 +42,13 @@ public class BetterThanFarmingBlocks {
 	public static Block oreSaltGranite;
 	public static Block blockSalt;
 
+	//Crops
+	public static Block cropsWatermelon;
+
 	//Food
 	public static Block blockOfCheese;
 	public static Block blockScallion;
+	public static Block blockWatermelon;
 
 	//Machines
 	public static Block cheeseMaker;
@@ -63,7 +70,22 @@ public class BetterThanFarmingBlocks {
 		EntityHelper.Core.createTileEntity(TileEntityStove.class, "stove");
 	}
 
+	private void createBlockTextureIndexes(){
+		//Watermelon
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_side_01.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_side_02.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_side_03.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_side_04.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_top_01.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_top_02.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_top_03.png");
+		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "watermelon_growing_top_04.png");
+
+	}
+
 	public void initializeBlocks() {
+
+		// block builders
 
 		BlockBuilder oreBuilder = new BlockBuilder(MOD_ID)
 				.setResistance(3f)
@@ -93,6 +115,18 @@ public class BetterThanFarmingBlocks {
 				.setBlockSound(BlockSounds.GRASS)
 				.setHardness(0.0f)
 				.setTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.PLACE_OVERWRITES, BlockTags.SHEARS_DO_SILK_TOUCH);
+
+		BlockBuilder blockCropBuilder = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.WOOD)
+			.setHardness(0.8F)
+			.setResistance(0.8F)
+			.setTags(BlockTags.MINEABLE_BY_HOE);
+		BlockBuilder blockFlowerBuilder = new BlockBuilder(MOD_ID)
+				.setBlockSound(BlockSounds.GRASS)
+				.setHardness(0.0f)
+				.setTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.NOT_IN_CREATIVE_MENU, BlockTags.OVERRIDE_STEPSOUND);
+
+		// blocks themselves
 
 		oreSaltStone = oreBuilder
 				.setTextures("oreSalt_stone.png")
@@ -145,9 +179,20 @@ public class BetterThanFarmingBlocks {
 				.build(new BlockTallGrass("block.scallion", nextBlockID("blockScallion"))
 						.setKilledByWeather()
 						.withTags(BetterThanFarmingTags.CUTTABLE_BY_KNIFE));
+		blockWatermelon = blockCropBuilder
+				.setTextures(MOD_ID, "melonSide.png")
+				.setTopTexture(MOD_ID, "melonTop.png")
+				.build(new BlockWatermelon("block.melon", nextBlockID("blockWatermelon"), Material.wood));
+		cropsWatermelon = blockFlowerBuilder
+				.setBlockModel(new BlockModelRenderBlocks(32))
+				.build(new BlockCropsWatermelon("crops.watermelon", nextBlockID("cropsWatermelon"))
+						.withDisabledStats()
+						.withDisabledNeighborNotifyOnMetadataChange()
+						.withLitInteriorSurface(true));
 
 		registerGUIs();
 		initializeTiles();
 		pickaxeLevels();
+		createBlockTextureIndexes();
 	}
 }

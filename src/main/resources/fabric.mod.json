@@ -40,7 +40,7 @@
 
   "depends": {
 		"fabricloader": ">=0.15.5",
-		"halplibe": ">=3.4.17",
+		"halplibe": ">=3.4.14",
 		"terrain-api": ">=1.4.4-7.1",
 		"catalyst-core": ">=1.1.3"
   },
