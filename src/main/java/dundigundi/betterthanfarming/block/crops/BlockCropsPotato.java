@@ -2,9 +2,11 @@ package dundigundi.betterthanfarming.block.crops;
 
 import dundigundi.betterthanfarming.item.BetterThanFarmingItems;
 import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockCropsWheat;
 import net.minecraft.core.block.BlockFlower;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.enums.EnumDropCause;
+import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
@@ -14,21 +16,20 @@ import java.util.Random;
 
 import static dundigundi.betterthanfarming.BetterThanFarming.MOD_ID;
 
-public class BlockCropsBeetRoot extends BlockFlower {
+public class BlockCropsPotato extends BlockFlower {
 	public final int[] growthStageTextures = new int[]{
-		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "beetroots_stage0.png"),
-		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "beetroots_stage1.png"),
-		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "beetroots_stage2.png"),
-		TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "beetroots_stage3.png")
+			TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "potato_growing_01.png"),
+			TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "potato_growing_02.png"),
+			TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "potato_growing_03.png"),
+			TextureHelper.getOrCreateBlockTextureIndex(MOD_ID, "potato_growing_04.png")
 	};
 
-	public BlockCropsBeetRoot(String key, int id) {
+	public BlockCropsPotato(String key, int id) {
 		super(key, id);
 		this.setTicking(true);
 		float f = 0.5f;
 		this.setBlockBounds(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, 0.25f, 0.5f + f);
 	}
-
 	@Override
 	public boolean canThisPlantGrowOnThisBlockID(int i) {
 		return i == Block.farmlandDirt.id;
@@ -36,12 +37,11 @@ public class BlockCropsBeetRoot extends BlockFlower {
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
+		float f;
+		int l;
 		super.updateTick(world, x, y, z, rand);
-		if (world.getBlockLightValue(x, y + 1, z) >= 9) {
-			int l = world.getBlockMetadata(x, y, z);
-			if (l < 4 && rand.nextInt((int)(100.0f / this.getGrowthRate(world, x, y, z))) == 0) {
-				world.setBlockMetadataWithNotify(x, y, z, ++l);
-			}
+		if (world.getBlockLightValue(x, y + 1, z) >= 9 && (l = world.getBlockMetadata(x, y, z)) < 3 && rand.nextInt((int)(100.0f / (f = this.getGrowthRate(world, x, y, z)))) == 0) {
+			world.setBlockMetadataWithNotify(x, y, z, ++l);
 		}
 	}
 
@@ -89,18 +89,17 @@ public class BlockCropsBeetRoot extends BlockFlower {
 
 	@Override
 	public int getBlockTextureFromSideAndMetadata(Side side, int data) {
-		if (data < 0 || data > 4) {
-			data = 4;
+		if (data < 0 || data > 3) {
+			data = 3;
 		}
 		return this.growthStageTextures[data];
 	}
 
 	@Override
 	public ItemStack[] getBreakResult(World world, EnumDropCause dropCause, int x, int y, int z, int meta, TileEntity tileEntity) {
-		if (meta < 3) {
-			return new ItemStack[]{new ItemStack(BetterThanFarmingItems.seedsBeetRoot, 1)};
-		} else {
-			return new ItemStack[]{new ItemStack(BetterThanFarmingItems.seedsBeetRoot, 1), new ItemStack(BetterThanFarmingItems.foodBeetRoot, 1)};
+		if (meta != 3) {
+			return new ItemStack[]{new ItemStack(BetterThanFarmingItems.foodPotatoRaw)};
 		}
+		return new ItemStack[]{new ItemStack(BetterThanFarmingItems.foodPotatoRaw, world.rand.nextInt(3) + 1), new ItemStack(BetterThanFarmingItems.foodPotatoRaw)};
 	}
 }
