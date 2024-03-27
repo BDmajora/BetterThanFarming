@@ -123,6 +123,13 @@ public class BetterThanFarmingRecipes implements RecipeEntrypoint {
 		RecipeBuilder.BlastFurnace(MOD_ID)
 				.setInput(BetterThanFarmingItems.foodCalamariRaw)
 				.create("cookMutton", (BetterThanFarmingItems.foodCalamariCooked).getDefaultStack());
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("BBB", "BBB", " W ")
+			.addInput('B', BetterThanFarmingItems.foodBeetRoot)
+			.addInput('W', Item.bowl)
+			.setConsumeContainer(false)
+			.create("beetrootSoup", BetterThanFarmingItems.foodBeetRootSoup.getDefaultStack());
+
 	}
 
 }

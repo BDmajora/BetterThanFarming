@@ -5,6 +5,7 @@ import dundigundi.betterthanfarming.BetterThanFarmingConfig;
 import dundigundi.betterthanfarming.BetterThanFarmingTags;
 import dundigundi.betterthanfarming.block.crops.BlockCropsPotato;
 import dundigundi.betterthanfarming.block.crops.BlockCropsWatermelon;
+import dundigundi.betterthanfarming.block.crops.BlockCropsBeetRoot;
 import dundigundi.betterthanfarming.block.entity.TileEntityCheeseMaker;
 import dundigundi.betterthanfarming.block.entity.TileEntityStove;
 import dundigundi.betterthanfarming.gui.ContainerCheeseMaker;
@@ -46,6 +47,11 @@ public class BetterThanFarmingBlocks {
 	//Crops
 	public static Block cropsWatermelon;
 	public static Block cropsPotato;
+
+	public static Block cropsBeetRoot;
+
+
+
 
 	//Food
 	public static Block blockOfCheese;
@@ -203,6 +209,12 @@ public class BetterThanFarmingBlocks {
 						.withDisabledStats()
 						.withDisabledNeighborNotifyOnMetadataChange()
 						.withLitInteriorSurface(true));
+		cropsBeetRoot= blockFlowerBuilder
+			.setBlockModel(new BlockModelRenderBlocks(6))
+			.build(new BlockCropsBeetRoot("crops.BeetRoot", nextBlockID("cropsBeetRoot"))
+				.withDisabledStats()
+				.withDisabledNeighborNotifyOnMetadataChange()
+				.withLitInteriorSurface(true));
 
 		registerGUIs();
 		initializeTiles();

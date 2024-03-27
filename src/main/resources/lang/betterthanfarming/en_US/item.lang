@@ -53,4 +53,7 @@ item.betterthanfarming.food.fullEnglish.desc=Contains all the ingredients for a 
 item.betterthanfarming.food.watermelon.slice.name=A slice of watermelon
 item.betterthanfarming.food.watermelon.slice.desc=Tastes delicious when cooled!
 
+item.betterthanfarming.food.BeetRoot.name=Beetroot
+item.betterthanfarming.seeds.BeetRoot.name=Beetroot Seeds
+item.betterthanfarming.food.BeetRootSoup.name=Beetroot Soup
 

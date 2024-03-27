@@ -32,6 +32,8 @@ public class BetterThanFarmingItems {
 	public static Item plate;
 	//seeds
 	public static Item seedsWatermelon;
+
+	public static Item seedsBeetRoot;
 	//crops and meats
 	public static Item foodPotatoRaw;
 	public static Item foodPotatoBaked;
@@ -52,6 +54,10 @@ public class BetterThanFarmingItems {
 	public static Item foodTikkaMassala;
 	public static Item foodFullEnglish;
 
+	public static Item foodBeetRoot;
+
+	public static Item foodBeetRootSoup;
+
 	public void initializeItems() {
 		salt = ItemHelper.createItem(MOD_ID, new Item("salt",nextItemID( "salt")), "salt.png").setMaxStackSize(64);
 		cowStomach = ItemHelper.createItem(MOD_ID, new Item("cowStomach", nextItemID("cowStomach")), "cowStomach.png").setMaxStackSize(1);
@@ -66,6 +72,7 @@ public class BetterThanFarmingItems {
 
 		//seeds
 		seedsWatermelon = ItemHelper.createItem(MOD_ID, new ItemSeeds("seeds.watermelon", nextItemID("seedsWatermelon"), BetterThanFarmingBlocks.cropsWatermelon), "seeds_watermelon.png");
+		seedsBeetRoot = ItemHelper.createItem(MOD_ID, new ItemSeeds("seeds.BeetRoot", nextItemID("seedsBeetRoot"), BetterThanFarmingBlocks.cropsBeetRoot), "beetroot_seeds.png");
 
 		//crops and meats
 		foodPotatoRaw = ItemHelper.createItem(MOD_ID, new ItemFoodPotatoRaw("food.potato.raw", nextItemID("foodPotatoRaw"), 1, false, 64, BetterThanFarmingBlocks.cropsPotato), "potato_raw.png");
@@ -83,12 +90,14 @@ public class BetterThanFarmingItems {
 		foodCalamariRaw = ItemHelper.createItem(MOD_ID, new ItemFoodStackable("food.calamari.raw", nextItemID("foodCalamariRaw"), 1, true, 64), "calamari_raw.png");
 		foodCalamariCooked = ItemHelper.createItem(MOD_ID, new ItemFoodStackable("food.calamari.cooked", nextItemID("foodCalamariCooked"), 3, true, 64), "calamari_cooked.png");
 		foodWatermelonSlice = ItemHelper.createItem(MOD_ID, new ItemFoodWatermelonSlice("food.watermelon.slice", nextItemID("foodWatermelonSlice"), 2, false, 64), "watermelonSlice.png");
+		foodBeetRoot = ItemHelper.createItem(MOD_ID, new ItemFoodBeetRoot("food.BeetRoot", nextItemID("foodBeetRoot"), 1, false, 64, BetterThanFarmingBlocks.cropsBeetRoot), "beetroot.png");
 
 		//dishes
 		foodBeefBourguignon = ItemHelper.createItem(MOD_ID, new ItemFoodWithBowl("food.beefBourguignon", nextItemID("foodBeefBourguignon"), 10, false), "beefBourguignon.png");
 		foodIrishStew = ItemHelper.createItem(MOD_ID, new ItemFoodWithBowl("food.irishStew", nextItemID("foodIrishStew"), 8, false), "irishStew.png");
 		foodTikkaMassala = ItemHelper.createItem(MOD_ID, new ItemFoodWithBowl("food.tikkaMassala", nextItemID("foodTikkaMassala"), 7, false), "tikkaMassala.png");
 		foodFullEnglish = ItemHelper.createItem(MOD_ID, new ItemFoodWithPlate("food.fullEnglish", nextItemID("foodFullEnglish"), 15, false), "fullEnglish.png");
+		foodBeetRootSoup = ItemHelper.createItem(MOD_ID, new ItemFoodWithBowl("food.BeetRootSoup", nextItemID("foodBeetRootSoup"), 10, false), "beetroot_soup.png");
 
 
 		//adding ingredients to the ingredientList to be able to cook them on stove
