@@ -58,6 +58,8 @@ public class BetterThanFarmingItems {
 
 	public static Item foodBeetRootSoup;
 
+	public static Item foodCarrot;
+
 	public void initializeItems() {
 		salt = ItemHelper.createItem(MOD_ID, new Item("salt",nextItemID( "salt")), "salt.png").setMaxStackSize(64);
 		cowStomach = ItemHelper.createItem(MOD_ID, new Item("cowStomach", nextItemID("cowStomach")), "cowStomach.png").setMaxStackSize(1);
@@ -91,6 +93,7 @@ public class BetterThanFarmingItems {
 		foodCalamariCooked = ItemHelper.createItem(MOD_ID, new ItemFoodStackable("food.calamari.cooked", nextItemID("foodCalamariCooked"), 3, true, 64), "calamari_cooked.png");
 		foodWatermelonSlice = ItemHelper.createItem(MOD_ID, new ItemFoodWatermelonSlice("food.watermelon.slice", nextItemID("foodWatermelonSlice"), 2, false, 64), "watermelonSlice.png");
 		foodBeetRoot = ItemHelper.createItem(MOD_ID, new ItemFoodBeetRoot("food.BeetRoot", nextItemID("foodBeetRoot"), 1, false, 64, BetterThanFarmingBlocks.cropsBeetRoot), "beetroot.png");
+		foodCarrot = ItemHelper.createItem(MOD_ID, new ItemFoodCarrot("food.Carrot", nextItemID("foodCarrot"), 1, false, 64, BetterThanFarmingBlocks.cropsCarrot), "carrot.png");
 
 		//dishes
 		foodBeefBourguignon = ItemHelper.createItem(MOD_ID, new ItemFoodWithBowl("food.beefBourguignon", nextItemID("foodBeefBourguignon"), 10, false), "beefBourguignon.png");
