@@ -3,10 +3,7 @@ package dundigundi.betterthanfarming.block;
 import dundigundi.betterthanfarming.BetterThanFarming;
 import dundigundi.betterthanfarming.BetterThanFarmingConfig;
 import dundigundi.betterthanfarming.BetterThanFarmingTags;
-import dundigundi.betterthanfarming.block.crops.BlockCropsPotato;
-import dundigundi.betterthanfarming.block.crops.BlockCropsWatermelon;
-import dundigundi.betterthanfarming.block.crops.BlockCropsBeetRoot;
-import dundigundi.betterthanfarming.block.crops.BlockCropsCarrot;
+import dundigundi.betterthanfarming.block.crops.*;
 import dundigundi.betterthanfarming.block.entity.TileEntityCheeseMaker;
 import dundigundi.betterthanfarming.block.entity.TileEntityStove;
 import dundigundi.betterthanfarming.gui.ContainerCheeseMaker;
@@ -53,7 +50,7 @@ public class BetterThanFarmingBlocks {
 
 	public static Block cropsCarrot;
 
-
+	public static Block cropsTorchFlower;
 
 
 	//Food
@@ -221,6 +218,12 @@ public class BetterThanFarmingBlocks {
 		cropsCarrot= blockFlowerBuilder
 			.setBlockModel(new BlockModelRenderBlocks(6))
 			.build(new BlockCropsCarrot("crops.Carrot", nextBlockID("cropsCarrot"))
+				.withDisabledStats()
+				.withDisabledNeighborNotifyOnMetadataChange()
+				.withLitInteriorSurface(true));
+		cropsTorchFlower= blockFlowerBuilder
+			.setBlockModel(new BlockModelRenderBlocks(6))
+			.build(new BlockCropsTorchFlower("crops.TorchFlower", nextBlockID("cropsTorchFlower"))
 				.withDisabledStats()
 				.withDisabledNeighborNotifyOnMetadataChange()
 				.withLitInteriorSurface(true));

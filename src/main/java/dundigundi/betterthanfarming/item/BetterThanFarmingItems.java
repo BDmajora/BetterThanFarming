@@ -34,6 +34,8 @@ public class BetterThanFarmingItems {
 	public static Item seedsWatermelon;
 
 	public static Item seedsBeetRoot;
+
+	public static Item seedsTorchFlower;
 	//crops and meats
 	public static Item foodPotatoRaw;
 	public static Item foodPotatoBaked;
@@ -60,6 +62,8 @@ public class BetterThanFarmingItems {
 
 	public static Item foodCarrot;
 
+	public static Item foodTorchFlower;
+
 	public void initializeItems() {
 		salt = ItemHelper.createItem(MOD_ID, new Item("salt",nextItemID( "salt")), "salt.png").setMaxStackSize(64);
 		cowStomach = ItemHelper.createItem(MOD_ID, new Item("cowStomach", nextItemID("cowStomach")), "cowStomach.png").setMaxStackSize(1);
@@ -75,6 +79,8 @@ public class BetterThanFarmingItems {
 		//seeds
 		seedsWatermelon = ItemHelper.createItem(MOD_ID, new ItemSeeds("seeds.watermelon", nextItemID("seedsWatermelon"), BetterThanFarmingBlocks.cropsWatermelon), "seeds_watermelon.png");
 		seedsBeetRoot = ItemHelper.createItem(MOD_ID, new ItemSeeds("seeds.BeetRoot", nextItemID("seedsBeetRoot"), BetterThanFarmingBlocks.cropsBeetRoot), "beetroot_seeds.png");
+		seedsTorchFlower = ItemHelper.createItem(MOD_ID, new ItemSeeds("seeds.TorchFlower", nextItemID("seedsTorchFlower"), BetterThanFarmingBlocks.cropsTorchFlower), "torchflower_seeds.png");
+
 
 		//crops and meats
 		foodPotatoRaw = ItemHelper.createItem(MOD_ID, new ItemFoodPotatoRaw("food.potato.raw", nextItemID("foodPotatoRaw"), 1, false, 64, BetterThanFarmingBlocks.cropsPotato), "potato_raw.png");
@@ -94,6 +100,8 @@ public class BetterThanFarmingItems {
 		foodWatermelonSlice = ItemHelper.createItem(MOD_ID, new ItemFoodWatermelonSlice("food.watermelon.slice", nextItemID("foodWatermelonSlice"), 2, false, 64), "watermelonSlice.png");
 		foodBeetRoot = ItemHelper.createItem(MOD_ID, new ItemFoodBeetRoot("food.BeetRoot", nextItemID("foodBeetRoot"), 1, false, 64, BetterThanFarmingBlocks.cropsBeetRoot), "beetroot.png");
 		foodCarrot = ItemHelper.createItem(MOD_ID, new ItemFoodCarrot("food.Carrot", nextItemID("foodCarrot"), 1, false, 64, BetterThanFarmingBlocks.cropsCarrot), "carrot.png");
+		foodTorchFlower = ItemHelper.createItem(MOD_ID, new ItemFoodTorchFlower("food.TorchFlower", nextItemID("foodTorchFlower"), 1, false, 64, BetterThanFarmingBlocks.cropsTorchFlower), "torchflower.png");
+
 
 		//dishes
 		foodBeefBourguignon = ItemHelper.createItem(MOD_ID, new ItemFoodWithBowl("food.beefBourguignon", nextItemID("foodBeefBourguignon"), 10, false), "beefBourguignon.png");
